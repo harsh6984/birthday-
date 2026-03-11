@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Birthday Utkarsh Shukla</title>
+
+<style>
+
+body{
+margin:0;
+overflow:hidden;
+font-family:Verdana;
+text-align:center;
+color:white;
+
+background:linear-gradient(270deg,#ff6a00,#ee0979,#00c9ff,#92fe9d);
+background-size:800% 800%;
+animation:bgMove 15s infinite alternate;
+}
+
+@keyframes bgMove{
+0%{background-position:0% 50%;}
+100%{background-position:100% 50%;}
+}
+
+h1{
+font-size:60px;
+margin-top:80px;
+animation:glow 2s infinite alternate;
+}
+
+@keyframes glow{
+from{ text-shadow:0 0 20px yellow;}
+to{ text-shadow:0 0 40px white;}
+}
+
+#message{
+font-size:28px;
+margin-top:20px;
+}
+
+/* balloons */
+
+.balloon{
+position:absolute;
+bottom:-150px;
+width:70px;
+height:90px;
+border-radius:50%;
+animation:float 10s linear infinite;
+}
+
+@keyframes float{
+0%{transform:translateY(0);}
+100%{transform:translateY(-120vh);}
+}
+
+/* confetti */
+
+.confetti{
+position:absolute;
+width:10px;
+height:10px;
+animation:fall 6s linear infinite;
+}
+
+@keyframes fall{
+0%{transform:translateY(-10vh) rotate(0);}
+100%{transform:translateY(110vh) rotate(360deg);}
+}
+
+/* cake */
+
+#cake{
+font-size:80px;
+margin-top:30px;
+animation:bounce 2s infinite;
+}
+
+@keyframes bounce{
+0%{transform:translateY(0);}
+50%{transform:translateY(-15px);}
+100%{transform:translateY(0);}
+}
+
+/* fireworks */
+
+.firework{
+position:absolute;
+width:8px;
+height:8px;
+border-radius:50%;
+animation:explode 1s ease-out;
+}
+
+@keyframes explode{
+0%{transform:scale(1);}
+100%{transform:scale(8);opacity:0;}
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>🎉 Happy Birthday Utkarsh Shukla 🎉</h1>
+
+<div id="cake">🎂</div>
+
+<div id="message">Welcome to the Birthday Celebration!</div>
+
+<audio autoplay loop>
+<source src="https://www2.cs.uic.edu/~i101/SoundFiles/HappyBirthday.mid">
+</audio>
+
+<script>
+
+/* balloons */
+
+for(let i=0;i<25;i++){
+let b=document.createElement("div");
+b.className="balloon";
+b.style.left=Math.random()*100+"vw";
+b.style.background="hsl("+Math.random()*360+",80%,60%)";
+b.style.animationDuration=(6+Math.random()*5)+"s";
+document.body.appendChild(b);
+}
+
+/* confetti */
+
+for(let i=0;i<120;i++){
+let c=document.createElement("div");
+c.className="confetti";
+c.style.left=Math.random()*100+"vw";
+c.style.background="hsl("+Math.random()*360+",90%,60%)";
+c.style.animationDuration=(3+Math.random()*5)+"s";
+document.body.appendChild(c);
+}
+
+/* fireworks */
+
+function firework(){
+let f=document.createElement("div");
+f.className="firework";
+f.style.left=Math.random()*100+"vw";
+f.style.top=Math.random()*60+"vh";
+f.style.background="hsl("+Math.random()*360+",100%,60%)";
+document.body.appendChild(f);
+
+setTimeout(()=>{f.remove()},1000);
+}
+
+setInterval(firework,800);
+
+/* message animation */
+
+let messages=[
+"🎈 Let's celebrate Utkarsh's Birthday!",
+"🎁 Wishing you success and happiness!",
+"🎂 May your dreams come true!",
+"🎊 Have an amazing year ahead!",
+"🎉 Enjoy your special day Utkarsh!"
+];
+
+let i=0;
+
+setInterval(()=>{
+document.getElementById("message").innerHTML=messages[i];
+i=(i+1)%messages.length;
+},6000);
+
+/* 5 minute celebration timer */
+
+let time=300;
+
+let timer=setInterval(()=>{
+time--;
+
+if(time<=0){
+clearInterval(timer);
+document.getElementById("message").innerHTML="🎆 Celebration Complete! Happy Birthday Utkarsh babyyy🎆";
+}
+
+},1000);
+
+</script>
+
+</body>
+</html>
